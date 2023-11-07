@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Login</title>
+  <head th:replace="~{fragments/commons::head}"></head>
+
+
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="login-container">
+    <h2 class="text-center mt-2"><span class="my-text-color">Login</span></h2>
+    <form class="mx-auto w-25 bg-blur" th:action="@{/users/login}" th:method="POST">
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+            <label for="username" >Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        </div>
+        <div class="col-form-label-sm ui-button d-flex justify-content-center">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+</body>
+
+</html>

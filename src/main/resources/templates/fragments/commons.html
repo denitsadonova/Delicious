@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}"/>
+    <title>Delicious WebApp</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-nav rounded " >
+        <div sec:authorize="isAuthenticated()">
+            <a class="nav-link my-text-color active h5 " th:href="@{/home}">Delicious WebApp</a>
+            <a class="nav-link my-text-color active h5  " th:href="@{/add/recipe}">Add Recipe</a>
+        <a class="nav-link my-text-color active h5  " th:href="@{/add/ingredient}">Add Ingredient</a>
+        </div>
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav" sec:authorize="!isAuthenticated()">
+            <ul class="navbar-nav row">
+                    <li class="nav-item col-md-4">
+                        <a class="nav-link active h5 my-text-color" th:href="@{/users/login}">Login</a>
+                    </li>
+                    <li class="nav-item col-md-4">
+                        <a class="nav-link my-text-color active h5" th:href="@{/users/register}">Register</a>
+                    </li>
+
+               <li class="nav-item col-md-4">
+                   <div sec:authorize="isAuthenticated()">
+                   <a class="nav-link h5 my-text-color" >Welcome,
+                       <span sec:authentication="name"></span> </a>
+                       <a class="nav-link my-text-color active h5" th:href="@{/logout}">Logout</a>
+                   </div>
+               </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<footer class="footer bg-transparent  py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background h5 my-text-color">
+            &copy; Spring team 2023. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

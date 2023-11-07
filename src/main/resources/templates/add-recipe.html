@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/commons::head}"></head>
+<title>Add Recipe</title>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="container">
+  <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Add Recipe</span></h2>
+  <form class="mx-auto w-25 bg-blur"  th:action="@{/add/recipe}" method="POST" th:object="${recipeAddBindingModel}">
+    <div class="col-form-label-sm">
+      <div class="label-holder my-text-color d-flex justify-content-center">
+        <label for="name">Name</label>
+        <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>
+        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>
+      </div>
+    </div>
+    <div class="col-form-label-sm">
+      <div class="label-holder my-text-color d-flex justify-content-center">
+        <label for="ingredients">Ingredients</label>
+        <input th:field="*{ingredients}" th:errorclass="bg-blur" type="text" id="ingredients" name="ingredients" required>
+        <small th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}" class="text-dark text-capitalize"></small>
+
+      </div>
+    </div>
+    <div class="col-form-label-sm">
+      <div class="label-holder my-text-color d-flex justify-content-center">
+      <select name="Type">
+        <option th:each="type : ${T(org.example.models.enums.RecipeType).values()}"
+                th:value="${type}" th:text="${type}"></option>
+      </select>
+      </div>
+    </div>
+    <div class="col-form-label-sm">
+      <div class="label-holder my-text-color d-flex justify-content-center">
+        <label for="preparation_time">Preparation Time</label>
+        <input th:field="*{preparationTime}" th:errorclass="bg-blur" type="text" id="preparation_time" name="preparation_time" required>
+        <small th:if="${#fields.hasErrors('preparationTime')}" th:errors="*{preparationTime}" class="text-dark text-capitalize"></small>
+
+      </div>
+      <div class="col-form-label-sm">
+        <div class="label-holder my-text-color d-flex justify-content-center">
+          <label for="preparation_guide">Preparation Guide</label>
+          <input th:field="*{preparationGuide}" th:errorclass="bg-blur" type="text" id="preparation_guide" name="preparation_guide" required>
+          <small th:if="${#fields.hasErrors('preparationGuide')}" th:errors="*{preparationGuide}" class="text-dark text-capitalize"></small>
+        </div>
+    </div>
+    <div class="col-form-label-sm d-flex justify-content-center">
+      <input type="submit" value="Add Recipe">
+    </div>
+</div>
+  </form>
+</div>
+
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+
+</body>
+</html>

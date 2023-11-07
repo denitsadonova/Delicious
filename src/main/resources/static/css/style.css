@@ -1,0 +1,77 @@
+.w-15 {
+    width: 15%;
+}
+
+.bg-gray {
+    background-color: #e9ecef;
+}
+
+.bg-nav{
+    background-color: #f8d7da;
+}
+
+
+body {
+    background-image: url(/img/background.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-bottom: 5rem;
+}
+
+textarea {
+    resize: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.img-thumb {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+}
+
+.bg-blur {
+    background-color: #f8d7da;
+    color: #efa2a9;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.mySticky {
+    position: sticky;
+    left: 0;
+}
+
+.container{
+    width: 90%;
+}
+
+.text-stroke{
+    text-shadow:
+            0.07em 0 lightpink,
+            0 0.07em lightpink,
+            -0.07em 0 lightpink,
+            0 -0.07em lightpink;
+}
+
+.my-text-color{
+    color: #e83e8c!important;
+}
+
+#big-div{
+}
+
+.badge-secondary{
+    background-color: #e4606d;
+}
