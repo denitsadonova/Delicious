@@ -3,12 +3,14 @@ package org.example.service;
 import org.example.models.entity.UserEntity;
 import org.example.models.userDetails.AppUserDetails;
 import org.example.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 public class ApplicationUserDetailsService implements UserDetailsService {
 

@@ -14,35 +14,39 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded " >
-        <div sec:authorize="isAuthenticated()">
-            <a class="nav-link my-text-color active h5 " th:href="@{/home}">Delicious WebApp</a>
-            <a class="nav-link my-text-color active h5  " th:href="@{/add/recipe}">Add Recipe</a>
-        <a class="nav-link my-text-color active h5  " th:href="@{/add/ingredient}">Add Ingredient</a>
+        <div>
+            <ul class="navbar-nav row">
+                <li class="nav-item col-md-4">
+            <a class="nav-link" th:href="@{/}">Delicious WebApp</a>
+                </li>
+                <li class="nav-item col-md-4">
+                    <a class="nav-link" th:href="@{/add/recipe}">Add Recipe</a>
+                </li>
+                <li class="nav-item col-md-4">
+        <a class="nav-link" th:href="@{/add/ingredient}">Add Ingredient</a>
+                </li>
+            </ul>
         </div>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav" sec:authorize="!isAuthenticated()">
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
                     <li class="nav-item col-md-4">
-                        <a class="nav-link active h5 my-text-color" th:href="@{/users/login}">Login</a>
+                        <a class="nav-link" th:href="@{/users/login}">Login</a>
                     </li>
                     <li class="nav-item col-md-4">
-                        <a class="nav-link my-text-color active h5" th:href="@{/users/register}">Register</a>
+                        <a class="nav-link" th:href="@{/users/register}">Register</a>
                     </li>
-
-               <li class="nav-item col-md-4">
-                   <div sec:authorize="isAuthenticated()">
-                   <a class="nav-link h5 my-text-color" >Welcome,
-                       <span sec:authentication="name"></span> </a>
-                       <a class="nav-link my-text-color active h5" th:href="@{/logout}">Logout</a>
-                   </div>
-               </li>
             </ul>
+                  <form th:method="post"
+                  th:action="@{/users/logout}">
+                      <input type="submit" class="nav-link logout-btn" value="Logout"/>
+                  </form>
         </div>
     </nav>
 </header>
 <footer class="footer bg-transparent  py-2">
     <div class="container-fluid text-center">
         <div class="footer-background h5 my-text-color">
-            &copy; Spring team 2023. All rights reserved.
+            &copy; Spring team 2025. All rights reserved.
         </div>
     </div>
 </footer>

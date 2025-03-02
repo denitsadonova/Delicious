@@ -14,6 +14,9 @@ import org.springframework.security.web.context.DelegatingSecurityContextReposit
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
+
+import static org.springframework.security.config.Customizer.withDefaults;
+
 //
 @Configuration
 public class SecurityConfiguration {
@@ -34,8 +37,7 @@ public class SecurityConfiguration {
 //                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
 //                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
                                         anyRequest().authenticated()
-                )
-                .formLogin(
+                ).formLogin(
                         (formLogin) ->
                                 formLogin.
                                         loginPage("/users/login").
@@ -43,15 +45,16 @@ public class SecurityConfiguration {
                                         passwordParameter("password").
                                         defaultSuccessUrl("/").
                                         failureForwardUrl("/users/login-error")
-                )
+               )
                 .logout((logout) ->
                         logout.logoutUrl("/users/logout").
                                 logoutSuccessUrl("/").
                                 invalidateHttpSession(true)
-                ).securityContext(
-                        securityContext -> securityContext.
-                                securityContextRepository(securityContextRepository)
                 ).build();
+//               .securityContext(
+//                        securityContext -> securityContext.
+//                                securityContextRepository(securityContextRepository)
+//                ).build();
     }
 
     @Bean
@@ -66,7 +69,7 @@ public class SecurityConfiguration {
         );
     }
     @Bean
-    public UserDetailsService userDetailsService(UserRepository userRepository) {
+    public ApplicationUserDetailsService applicationUserDetailsService (UserRepository userRepository){
         return new ApplicationUserDetailsService(userRepository);
     }
     @Bean

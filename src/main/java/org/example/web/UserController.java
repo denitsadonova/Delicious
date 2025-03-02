@@ -2,6 +2,7 @@ package org.example.web;
 
 
 import jakarta.validation.Valid;
+import org.example.models.binding.UserLoginBindingModel;
 import org.example.models.binding.UserRegisterBindingModel;
 import org.example.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -43,11 +44,6 @@ public class UserController {
         return "redirect:login";
 
     }
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/";}
-
-
 
 
     @ModelAttribute

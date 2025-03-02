@@ -17,18 +17,28 @@
     </div>
     <div class="col-form-label-sm">
       <div class="label-holder my-text-color d-flex justify-content-center">
-        <label for="ingredients">Ingredients</label>
-        <input th:field="*{ingredients}" th:errorclass="bg-blur" type="text" id="ingredients" name="ingredients" required>
-        <small th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}" class="text-dark text-capitalize"></small>
+        <label>Ingredients</label>
+        <ul>
+          <li th:each="ingredient : ${allIngredients}">
+            <label>
+              <input type="checkbox" name="ingredientIds" th:value="${ingredient.id}"
+                     th:checked="${recipeAddBindingModel.ingredientIds != null && recipeAddBindingModel.ingredientIds.contains(ingredient.id)}">
+              <span th:text="${ingredient.name}"></span>
+            </label>
+          </li>
+        </ul>
+        <small th:if="${#fields.hasErrors('ingredientIds')}" th:errors="*{ingredientIds}" class="text-danger"></small>
 
       </div>
     </div>
     <div class="col-form-label-sm">
       <div class="label-holder my-text-color d-flex justify-content-center">
-      <select name="Type">
-        <option th:each="type : ${T(org.example.models.enums.RecipeType).values()}"
-                th:value="${type}" th:text="${type}"></option>
-      </select>
+        <label>
+          <select name="Type">
+            <option th:each="type : ${T(org.example.models.enums.RecipeType).values()}"
+                    th:value="${type}" th:text="${type}"></option>
+          </select>
+        </label>
       </div>
     </div>
     <div class="col-form-label-sm">

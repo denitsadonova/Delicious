@@ -28,14 +28,15 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public void addRecipe(RecipeAddBindingModel recipeAddBindingModel) {
         RecipeEntity recipe = modelMapper.map(recipeAddBindingModel, RecipeEntity.class);
-        List<String> ingredients = Arrays.stream(recipeAddBindingModel.getIngredients().split(", ")).toList();
-       List<IngredientEntity> allIngredients = new ArrayList<>();
-        for (String ingredient : ingredients) {
-            IngredientEntity ingredientEntity = ingredientRepository.findByName(ingredient);
-            allIngredients.add(ingredientEntity);
-        }
+        List<IngredientEntity> allIngredients = ingredientRepository.findAllById(recipeAddBindingModel.getIngredientIds());
+
         recipe.setIngredients(allIngredients);
         recipeRepository.save(recipe);
 
+    }
+
+    @Override
+    public List<RecipeEntity> getAllRecipes() {
+        return recipeRepository.findAll();
     }
 }

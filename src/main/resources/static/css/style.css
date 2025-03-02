@@ -18,9 +18,33 @@ body {
     background-size: cover;
     margin-bottom: 5rem;
 }
-
+input {
+    background: none;
+    color: deeppink;
+    text-align: center;
+    border: 1px solid hotpink;
+    border-radius: 2px;
+    margin: 2px;
+    padding: 2px;
+}
+select {
+    background: none;
+    color: deeppink;
+    text-align: center;
+    border: 1px solid hotpink;
+    border-radius: 2px;
+    margin: 3px;
+    padding: 3px;
+}
 textarea {
     resize: none;
+}
+a.nav-link {
+    display: flex;
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
+    color: hotpink;
 }
 
 footer {
@@ -69,9 +93,12 @@ footer {
     color: #e83e8c!important;
 }
 
-#big-div{
-}
-
 .badge-secondary{
     background-color: #e4606d;
+}
+input.logout-btn {
+    border: none;
+    color: hotpink;
+    margin-left: 0;
+    padding-left: 0;
 }

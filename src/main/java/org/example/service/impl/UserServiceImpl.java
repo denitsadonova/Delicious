@@ -1,5 +1,6 @@
 package org.example.service.impl;
 
+import org.example.models.binding.UserLoginBindingModel;
 import org.example.models.entity.UserEntity;
 import org.example.models.binding.UserRegisterBindingModel;
 import org.example.repository.UserRepository;
@@ -12,14 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
 //    private final UserDetailsService userDetailsService;
 
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
 //        this.userDetailsService = userDetailsService;
     }
@@ -31,7 +30,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(userRegisterBindingModel.getEmail());
         userEntity.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
 
-    userRepository.save(userEntity);
+        userRepository.save(userEntity);
     }
-
 }

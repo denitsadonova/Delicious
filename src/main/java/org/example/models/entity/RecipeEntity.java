@@ -15,7 +15,12 @@ public class RecipeEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "recipe_ingredient",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
     private List<IngredientEntity> ingredients;
     @Enumerated(EnumType.STRING)
     private RecipeType type;

@@ -2,12 +2,14 @@ package org.example.models.binding;
 
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 public class RecipeAddBindingModel {
     @NotBlank
     @Size(min = 3, max = 20, message = "The name of the recipe must be at least 3 characters!")
     private String name;
-    @NotBlank(message = "You should add ingredients!")
-    private String ingredients;
+    @NotEmpty(message = "You should add ingredients!")
+    private List<Long> ingredientIds;
 
     @NotBlank(message = "You should select type!")
     private String type;
@@ -29,12 +31,12 @@ public class RecipeAddBindingModel {
         this.name = name;
     }
 
-    public String getIngredients() {
-        return ingredients;
+    public List<Long> getIngredientIds() {
+        return ingredientIds;
     }
 
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
+    public void setIngredientIds(List<Long> ingredientIds) {
+        this.ingredientIds = ingredientIds;
     }
 
     public String getType() {

@@ -1,7 +1,9 @@
 package org.example.models.entity;
 
 import jakarta.persistence.*;
+import org.example.models.enums.ClassOfFood;
 import org.example.models.enums.IngredientType;
+
 
 @Entity
 @Table(name = "ingredients")
@@ -13,6 +15,9 @@ public class IngredientEntity {
    private String name;
    @Enumerated(EnumType.STRING)
    private IngredientType type;
+   @Enumerated(EnumType.STRING)
+   private ClassOfFood classOfFood;
+
 
    public IngredientEntity() {
    }
@@ -39,5 +44,13 @@ public class IngredientEntity {
 
    public void setType(IngredientType type) {
       this.type = type;
+   }
+
+   public ClassOfFood getClassOfFood() {
+      return classOfFood;
+   }
+
+   public void setClassOfFood(ClassOfFood classOfFood) {
+      this.classOfFood = classOfFood;
    }
 }

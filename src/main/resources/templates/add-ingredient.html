@@ -17,10 +17,18 @@
     </div>
     <div class="col-form-label-sm">
       <div class="label-holder my-text-color d-flex justify-content-center">
-        <select name="Type">
-          <option th:each="type : ${T(org.example.models.enums.IngredientType).values()}"
-                  th:value="${type}" th:text="${type}"></option>
-        </select>
+        <label>
+          <select name="Type">
+            <option th:each="type : ${T(org.example.models.enums.IngredientType).values()}"
+                    th:value="${type}" th:text="${type}"></option>
+          </select>
+        </label>
+        <label>
+          <select name="Class">
+            <option th:each="class : ${T(org.example.models.enums.ClassOfFood).values()}"
+                    th:value="${class}" th:text="${class}"></option>
+          </select>
+        </label>
       </div>
     </div>
       <div class="col-form-label-sm d-flex justify-content-center">
