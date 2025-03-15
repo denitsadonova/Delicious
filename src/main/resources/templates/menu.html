@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/commons::head}"></head>
+<title>View All Recipes</title>
+<script>
+    function toggleDescription(id) {
+        let desc = document.getElementById(id);
+        desc.style.display = (desc.style.display === "none") ? "block" : "none";
+    }
+</script>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <div class="container bg-blur rounded mt-5 ">
+        <h1>Health Information</h1>
+        <hr class="my-3 bg-white w-50"/>
+
+        <p class="h4">
+            Here you can find the weekly menu you created for yourself. Enjoy!
+        </p>
+        <div>
+            <ul>
+                <li th:each="menu : ${menus}">
+                    <h2 th:text="${menu.dayOfWeek}">Day: </h2>
+                        <ul>
+                            <li th:each="recipe : ${menu.recipes}" th:text="${recipe.name}"></li>
+                        </ul>
+                </li>
+            </ul>
+                    </div>
+
+        <hr class="my-3 bg-white w-75"/>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+
+</body>
+</html>
