@@ -25,6 +25,14 @@
                     </ul>
                     <p><strong>Time:</strong> <span th:text="${recipe.preparationTime}"></span></p>
                     <p><strong>Instructions:</strong> <span th:text="${recipe.preparationGuide}"></span></p>
+
+                    <form th:action="@{/menus/recipes/{recipeId}/add(recipeId=${recipe.id})}" method="POST">                        <label for="dayOfWeek">Select Day:</label>
+                        <select id="dayOfWeek" name="dayOfWeek">
+                            <option th:each="day : ${T(org.example.models.enums.DayOfWeek).values()}"
+                                    th:value="${day}" th:text="${day}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Add to Menu</button>
+                    </form>
                 </li>
             </ul>
         </div>
