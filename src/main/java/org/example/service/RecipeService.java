@@ -6,6 +6,6 @@ import org.example.models.entity.RecipeEntity;
 import java.util.List;
 
 public interface RecipeService {
-    RecipeEntity addRecipe(RecipeAddBindingModel recipeAddBindingModel);
+    void addRecipe(RecipeAddBindingModel recipeAddBindingModel);
     List<RecipeEntity> getAllRecipes();
 }
