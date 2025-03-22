@@ -21,12 +21,13 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     @Override
-    public void addIngredient(IngredientAddBindingModel ingredientAddBindingModel) {
+    public IngredientEntity addIngredient(IngredientAddBindingModel ingredientAddBindingModel) {
         IngredientEntity ingredient = new IngredientEntity();
         ingredient.setName(ingredientAddBindingModel.getName());
         ingredient.setType(IngredientType.valueOf(ingredientAddBindingModel.getType()));
 
         ingredientRepository.save(ingredient);
+        return ingredient;
 
     }
 

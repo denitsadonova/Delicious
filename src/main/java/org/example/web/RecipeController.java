@@ -12,21 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 
 @Controller
 public class RecipeController {
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
-    private final MenuRepository menuRepository;
 
-    public RecipeController(RecipeService recipeService, IngredientService ingredientService, MenuRepository menuRepository) {
+    public RecipeController(RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
-        this.menuRepository = menuRepository;
     }
 
     @GetMapping("/add/recipe")

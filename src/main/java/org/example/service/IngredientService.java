@@ -6,7 +6,7 @@ import org.example.models.entity.IngredientEntity;
 import java.util.List;
 
 public interface IngredientService {
-    void addIngredient(IngredientAddBindingModel ingredientAddBindingModel);
+    IngredientEntity addIngredient(IngredientAddBindingModel ingredientAddBindingModel);
     List<IngredientEntity> getAllIngredients();
     List<IngredientEntity> findAllById(List<Long> ingredients);
 }

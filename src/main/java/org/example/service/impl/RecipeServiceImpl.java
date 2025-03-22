@@ -26,12 +26,13 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public void addRecipe(RecipeAddBindingModel recipeAddBindingModel) {
+    public RecipeEntity addRecipe(RecipeAddBindingModel recipeAddBindingModel) {
         RecipeEntity recipe = modelMapper.map(recipeAddBindingModel, RecipeEntity.class);
         List<IngredientEntity> allIngredients = ingredientRepository.findAllById(recipeAddBindingModel.getIngredientIds());
 
         recipe.setIngredients(allIngredients);
         recipeRepository.save(recipe);
+        return recipe;
 
     }
 

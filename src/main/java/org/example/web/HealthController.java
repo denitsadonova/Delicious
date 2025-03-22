@@ -1,7 +1,6 @@
 package org.example.web;
 
 import jakarta.validation.Valid;
-import org.example.models.binding.IngredientAddBindingModel;
 import org.example.models.binding.MineralAddBindingModel;
 import org.example.models.binding.VitaminAddBindingModel;
 import org.example.models.entity.MineralEntity;

@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/commons::head}"></head>
-<title>View All Recipes</title>
+<title>View Your Menu</title>
 <script>
     function toggleDescription(id) {
         let desc = document.getElementById(id);
         desc.style.display = (desc.style.display === "none") ? "block" : "none";
+    }
+
+        document.addEventListener("DOMContentLoaded", function () {
+        fetchMenus();
+    });
+
+        function fetchMenus() {
+        fetch('/api/menus') // Calling the REST API
+            .then(response => response.json())
+            .then(data => {
+                let menuList = document.getElementById("menu-list");
+                menuList.innerHTML = ""; // Clear existing content
+
+                data.forEach(menu => {
+                    let menuItem = document.createElement("li");
+                    menuItem.innerHTML = `<h2>${menu.dayOfWeek}</h2>`;
+
+                    let recipeList = document.createElement("ul");
+                    menu.recipes.forEach(recipe => {
+                        let recipeItem = document.createElement("li");
+                        recipeItem.textContent = recipe.name;
+                        recipeList.appendChild(recipeItem);
+                    });
+
+                    menuItem.appendChild(recipeList);
+                    menuList.appendChild(menuItem);
+                });
+            })
+            .catch(error => console.error('Error fetching menus:', error));
     }
 </script>
 <body>
@@ -22,12 +51,12 @@
             <ul>
                 <li th:each="menu : ${menus}">
                     <h2 th:text="${menu.dayOfWeek}">Day: </h2>
-                        <ul>
-                            <li th:each="recipe : ${menu.recipes}" th:text="${recipe.name}"></li>
-                        </ul>
+                    <ul>
+                        <li th:each="recipe : ${menu.recipes}" th:text="${recipe.name}"></li>
+                    </ul>
                 </li>
             </ul>
-                    </div>
+        </div>
 
         <hr class="my-3 bg-white w-75"/>
     </div>
