@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/commons::head}"></head>
-<title>View All Recipes</title>
+<title>View Health Info</title>
 <script>
     function toggleDescription(id) {
-        let desc = document.getElementById(id);
-        desc.style.display = (desc.style.display === "none") ? "block" : "none";
+        var element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
     }
 </script>
 <body>
@@ -19,35 +23,21 @@
             Here you can find all about the Health information that is in our website. Enjoy!
         </p>
         <h2>Vitamins</h2>
-<!--        <ul>-->
-<!--            <li th:each="vitamin : ${vitamins}">-->
-<!--                <a href="#" th:onclick="|showInfo('${vitamin.name()}', '${vitamin.description}')|" th:text="${vitamin.name}"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <ul>-->
-<!--        <li th:each="vitamin : ${vitamins}">-->
-<!--            <span th:text="${vitamin.name} + ' - ' + ${vitamin.description}"></span>-->
-<!--        </li>-->
-<!--        </ul>-->
         <ul>
             <li th:each="vitamin, iter : ${vitamins}">
                 <a class="health" href="#" th:onclick="|toggleDescription('vitamin' + ${iter.index})|" th:text="${vitamin.name}"></a>
                 <p th:id="|vitamin${iter.index}|" th:text="${vitamin.description}" style="display: none;"></p>
             </li>
         </ul>
+
         <h2>Minerals</h2>
-<!--        <ul>-->
-<!--            <li th:each="mineral : ${minerals}">-->
-<!--                <a href="#" th:onclick="|showInfo('${mineral.name()}', '${mineral.description}')|" th:text="${mineral.name()}"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
         <ul>
             <li th:each="mineral, iter : ${minerals}">
                 <a class="health" href="#" th:onclick="|toggleDescription('mineral' + ${iter.index})|" th:text="${mineral.name}"></a>
                 <p th:id="|mineral${iter.index}|" th:text="${mineral.description}" style="display: none;"></p>
             </li>
         </ul>
-        <hr class="my-3 bg-white w-75"/>
+
     </div>
 </main>
 
