@@ -5,18 +5,18 @@ import jakarta.validation.constraints.*;
 import java.util.List;
 
 public class RecipeAddBindingModel {
-    @NotBlank
+    @NotBlank(message = "{errorRequiredField}")
     @Size(min = 3, max = 20, message = "The name of the recipe must be at least 3 characters!")
     private String name;
-    @NotEmpty(message = "You should add ingredients!")
+    @NotEmpty(message = "{errorRequiredField}")
     private List<Long> ingredientIds;
 
-    @NotBlank(message = "You should select type!")
+    @NotBlank(message = "{errorRequiredField}")
     private String type;
     @Positive(message = "Preparation time must be a positive number!")
 
     private Float preparationTime;
-    @NotBlank(message = "You should add a guide for preparation!")
+    @NotBlank(message = "{errorRequiredField}")
 
     private String preparationGuide;
 

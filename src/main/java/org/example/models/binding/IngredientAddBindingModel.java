@@ -3,9 +3,9 @@ package org.example.models.binding;
 import jakarta.validation.constraints.NotBlank;
 
 public class IngredientAddBindingModel {
-    @NotBlank(message = "You should add an ingredient name!")
+    @NotBlank(message = "{errorRequiredField}")
     private String name;
-    @NotBlank
+    @NotBlank(message = "{errorRequiredField}")
     private String type;
 
     public IngredientAddBindingModel() {

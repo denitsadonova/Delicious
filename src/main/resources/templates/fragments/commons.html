@@ -6,7 +6,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width initial-scale=1.0"/>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}"/>
-    <title>Delicious WebApp</title>
+    <title th:text="#{welcomeMessage}">Welcome</title>
     <link rel="stylesheet" href="/css/reset-css.css"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/style.css"/>
@@ -20,30 +20,43 @@
             <a class="nav-link" th:href="@{/}">Delicious WebApp</a>
                 </li>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link" th:href="@{/add/recipe}">Add Recipe</a>
+                    <a class="nav-link" th:href="@{/add/recipe}" th:text="#{addRecipe}">Add Recipe</a>
                 </li>
                 <li class="nav-item col-md-4">
-        <a class="nav-link" th:href="@{/add/ingredient}">Add Ingredient</a>
+        <a class="nav-link" th:href="@{/add/ingredient}" th:text="#{addIngredient}">Add Ingredient</a>
                 </li>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link" th:href="@{/health}">Health Information</a>
+                    <a class="nav-link" th:href="@{/health}" th:text="#{healthInfo}">Health Information</a>
                 </li>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link" th:href="@{/menu}">Weekly Menu</a>
+                    <a class="nav-link" th:href="@{/menu}" th:text="#{weeklyMenu}">Weekly Menu</a>
+                </li>
+            </ul>
+        </div>
+        <div class="language-switcher">
+            <ul class="navbar-nav row">
+                <li class="nav-item col-md-4">
+                    <a class="nav-link" th:href="@{/home?lang=en}">English</a>
+                </li>
+                <li class="nav-item col-md-4">
+                    <a class="nav-link" th:href="@{/home?lang=fr}">Français</a>
+                </li>
+                <li class="nav-item col-md-4">
+                    <a class="nav-link" th:href="@{/home?lang=bg}">Български</a>
                 </li>
             </ul>
         </div>
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
                     <li class="nav-item col-md-4">
-                        <a class="nav-link" th:href="@{/users/login}">Login</a>
+                        <a class="nav-link" th:href="@{/users/login}" th:text="#{loginButton}">Login</a>
                     </li>
                     <li class="nav-item col-md-4">
-                        <a class="nav-link" th:href="@{/users/register}">Register</a>
+                        <a class="nav-link" th:href="@{/users/register}" th:text="#{registerButton}">Register</a>
                     </li>
             </ul>
                   <form th:method="post"
-                  th:action="@{/users/logout}">
+                  th:action="@{/users/logout}" th:text="#{logoutButton}">
                       <input type="submit" class="nav-link logout-btn" value="Logout"/>
                   </form>
         </div>

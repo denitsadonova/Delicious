@@ -3,9 +3,9 @@ package org.example.models.binding;
 import jakarta.validation.constraints.NotBlank;
 
 public class UserLoginBindingModel {
-    @NotBlank
+    @NotBlank(message = "{errorRequiredField}")
     private String username;
-    @NotBlank
+    @NotBlank(message = "{errorRequiredField}")
     private String password;
 
     public UserLoginBindingModel() {
