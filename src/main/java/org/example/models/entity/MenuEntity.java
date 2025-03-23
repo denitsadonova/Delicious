@@ -13,7 +13,7 @@ public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<RecipeEntity> recipes;
     @Enumerated(EnumType.STRING)
     private DayOfWeek dayOfWeek;

@@ -16,7 +16,12 @@
          You will also find information on many ingredients such as their nutrition score, vitamins and calories.
         </p>
         <hr class="my-3 bg-white w-75"/>
-
+        <div th:if="${featuredRecipe}" class="featured-recipe mt-5">
+            <h2>Today's Featured Recipe</h2>
+            <h3 th:text="${featuredRecipe.name}"></h3>
+            <p th:text="${featuredRecipe.preparationGuide}"></p>
+            <a th:href="@{/recipes/{id}(id=${featuredRecipe.id})}" class="btn btn-primary">View Recipe</a>
+        </div>
         <h3>
             <a class="my-text-color" th:href="@{/users/login}" th:text="#{loginButton}">Login</a>
             if you have an account or

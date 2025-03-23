@@ -12,4 +12,6 @@ import java.util.Map;
 public interface MenuService {
     public void createMenu(UserEntity user, DayOfWeek dayOfWeek, Long recipeId);
     public List<MenuEntity> getGroupedMenus();
+
+    void removeRecipeFromMenu(UserEntity user, DayOfWeek dayOfWeek, Long recipeId);
 }

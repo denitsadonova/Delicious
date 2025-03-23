@@ -54,11 +54,12 @@
                     <li class="nav-item col-md-4">
                         <a class="nav-link" th:href="@{/users/register}" th:text="#{registerButton}">Register</a>
                     </li>
-            </ul>
-                  <form th:method="post"
+                 <li> <form th:method="post"
                   th:action="@{/users/logout}" th:text="#{logoutButton}">
                       <input type="submit" class="nav-link logout-btn" value="Logout"/>
                   </form>
+                 </li>
+            </ul>
         </div>
     </nav>
 </header>

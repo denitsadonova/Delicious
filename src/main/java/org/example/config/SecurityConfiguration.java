@@ -1,5 +1,6 @@
 package org.example.config;
 //
+import org.example.models.enums.UserRoleEnum;
 import org.example.repository.UserRepository;
 import org.example.service.ApplicationUserDetailsService;
 import org.modelmapper.ModelMapper;
@@ -34,8 +35,7 @@ public class SecurityConfiguration {
                                         .permitAll().
                                         requestMatchers("/", "/users/login", "/users/register", "/users/login-error")
                                         .permitAll().
-//                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
-//                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
+                                        requestMatchers("/admin/manage-roles").hasRole("ADMIN").
                                         anyRequest().authenticated()
                 ).formLogin(
                         (formLogin) ->

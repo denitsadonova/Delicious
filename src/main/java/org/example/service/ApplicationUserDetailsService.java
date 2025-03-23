@@ -1,10 +1,13 @@
 package org.example.service;
 
+import org.example.models.entity.RoleEntity;
 import org.example.models.entity.UserEntity;
 import org.example.models.userDetails.AppUserDetails;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,9 +32,11 @@ public class ApplicationUserDetailsService implements UserDetailsService {
 
     private UserDetails map(UserEntity userEntity) {
         return AppUserDetails.withUsername(userEntity.getUsername()).password(userEntity.getPassword())
-                .authorities(List.of()).build();
+                .authorities(userEntity.getRoles().stream().map(ApplicationUserDetailsService::map).toList()).build();
     }
-
+private static GrantedAuthority map(RoleEntity roleEntity) {
+        return  new SimpleGrantedAuthority("ROLE_" + roleEntity.getRole().name());
+}
 }
 
 

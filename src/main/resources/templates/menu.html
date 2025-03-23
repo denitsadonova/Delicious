@@ -52,7 +52,13 @@
                 <li th:each="menu : ${menus}">
                     <h2 th:text="${menu.dayOfWeek}">Day: </h2>
                     <ul>
-                        <li th:each="recipe : ${menu.recipes}" th:text="${recipe.name}"></li>
+                        <li th:each="recipe : ${menu.recipes}">
+                            <span th:text="${recipe.name}"></span>
+                            <form th:action="@{/menus/recipes/{id}/remove(id=${recipe.id})}" method="post" style="display:inline;">
+                                <input type="hidden" name="dayOfWeek" th:value="${menu.dayOfWeek}" />
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>

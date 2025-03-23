@@ -2,6 +2,11 @@ package org.example.models.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
@@ -15,8 +20,16 @@ public class UserEntity {
     private String password;
     @Column(nullable = false, unique = true)
     private String email;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<RoleEntity> roles;
 
     public UserEntity() {
+        roles = new ArrayList<>();
     }
 
 
@@ -50,5 +63,13 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

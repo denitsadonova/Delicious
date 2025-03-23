@@ -43,4 +43,17 @@ public class MenuController {
         return "success-add-menu";
     }
 
+    @PostMapping("/menus/recipes/{recipeId}/remove")
+    public String removeRecipeFromMenu(@PathVariable Long recipeId, @RequestParam DayOfWeek dayOfWeek) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        UserEntity user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        menuService.removeRecipeFromMenu(user, dayOfWeek, recipeId);
+
+        return "redirect:/menu"; // Redirect to the menu page after removing
+    }
+
 }
