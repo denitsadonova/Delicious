@@ -1,0 +1,85 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head th:replace="~{fragments/commons::head}"></head>-->
+<!--<title>Add Recipe</title>-->
+<!--<body>-->
+<!--<header th:replace="~{fragments/commons::nav}"></header>-->
+
+<!--<div class="container">-->
+<!--    <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Add Vitamin</span></h2>-->
+<!--    <form class="mx-auto w-25 bg-blur" th:action="@{/add/vitamin}" method="POST" th:object="${vitaminAddBindingModel}>-->
+<!--<div class="col-form-label-sm">-->
+<!--   <div class="label-holder my-text-color d-flex justify-content-center">-->
+<!--    <label for="name">Name</label>-->
+<!--    <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>-->
+<!--    <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>-->
+<!--   </div>-->
+<!--</div>-->
+<!--<div class="col-form-label-sm">-->
+<!--    <div class="label-holder my-text-color d-flex justify-content-center">-->
+<!--        <label for="description">Description</label>-->
+<!--        <input th:field="*{description}" th:errorclass="bg-blur" type="text" id="description" name="description" required>-->
+<!--        <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-dark text-capitalize"></small>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="col-form-label-sm d-flex justify-content-center">-->
+<!--    <input type="submit" value="Add Vitamin">-->
+<!--</div>-->
+<!--</form>-->
+<!--<footer th:replace="~{fragments/commons::footer}"></footer>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<h2>Add Mineral</h2>-->
+<!--<form class="mx-auto w-25 bg-blur" th:action="@{/health/addMineral}" method="post" th:object="${mineralAddBindingModel}>-->
+<!--            <div class="col-form-label-sm">-->
+<!--<div class="label-holder my-text-color d-flex justify-content-center">-->
+<!--    <label for="name">Name</label>-->
+<!--    <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>-->
+<!--    <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-form-label-sm">-->
+<!--    <div class="label-holder my-text-color d-flex justify-content-center">-->
+<!--        <label for="description">Description</label>-->
+<!--        <input th:field="*{description}" th:errorclass="bg-blur" type="text" id="description" name="description" required>-->
+<!--        <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-dark text-capitalize"></small>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</form>-->
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/commons::head}"></head>
+<title>Add Vitamin</title>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+
+<div class="container">
+    <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Add Vitamin</span></h2>
+    <form class="mx-auto w-25 bg-blur" th:action="@{/add/vitamin}" method="POST" th:object="${vitaminAddBindingModel}">
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="name">Name</label>
+                <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="description">Description</label>
+                <input th:field="*{description}" th:errorclass="bg-blur" type="text" id="description" name="description" required>
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm d-flex justify-content-center">
+            <input type="submit" value="Add Vitamin">
+        </div>
+    </form>
+</div>
+
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+
+
+</body>
+</html>
