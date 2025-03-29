@@ -1,13 +1,13 @@
 package org.example.config;
-//
-import org.example.models.enums.UserRoleEnum;
+
 import org.example.repository.UserRepository;
 import org.example.service.ApplicationUserDetailsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -16,26 +16,24 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
-//
+@EnableMethodSecurity
 @Configuration
 public class SecurityConfiguration {
-//
-//
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
                                            SecurityContextRepository securityContextRepository) throws Exception {
 
        return http
-                .authorizeHttpRequests(
+               .csrf(AbstractHttpConfigurer::disable)
+               .authorizeHttpRequests(
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
                                         requestMatchers("/css/**", "/img/**")
                                         .permitAll().
                                         requestMatchers("/", "/users/login", "/users/register", "/users/login-error")
                                         .permitAll().
-                                        requestMatchers("/admin/manage-roles").hasRole("ADMIN").
+                                        requestMatchers("/admin/**").hasRole("ADMIN").
                                         anyRequest().authenticated()
                 ).formLogin(
                         (formLogin) ->

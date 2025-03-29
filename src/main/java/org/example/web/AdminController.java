@@ -1,6 +1,7 @@
 package org.example.web;
 
 import org.example.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +16,27 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @GetMapping("/manage-roles")
-    public String showUserManagementPage(Model model) {
+@GetMapping
+@PreAuthorize("hasRole('ADMIN')")
+public String showUserManagementPage(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "manage-roles";
+        return "admin";
     }
 
 
     @PostMapping("/users/{username}/make-admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public String makeAdmin(@PathVariable String username) {
         userService.assignAdminRole(username);
-        return "redirect:/admin/users"; // Refresh the page
+        return "redirect:/"; // Refresh the page
     }
+
+    @PostMapping("/updateRole/{userId}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String updateUserRole(@PathVariable Long userId, String role) {
+        userService.updateUserRole(userId, role);
+        return "redirect:/";
+    }
+
 
 }
