@@ -2,8 +2,6 @@ package org.example.service;
 
 import org.example.models.binding.MineralAddBindingModel;
 import org.example.models.entity.MineralEntity;
-import org.example.repository.MineralRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

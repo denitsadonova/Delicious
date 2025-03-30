@@ -2,12 +2,10 @@ package org.example.web;
 
 
 import jakarta.validation.Valid;
-import org.example.models.binding.UserLoginBindingModel;
 import org.example.models.binding.UserRegisterBindingModel;
 import org.example.models.binding.UserUpdateBindingModel;
 import org.example.models.entity.UserEntity;
 import org.example.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

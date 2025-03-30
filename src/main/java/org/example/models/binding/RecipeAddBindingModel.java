@@ -8,16 +8,17 @@ public class RecipeAddBindingModel {
     @NotBlank(message = "{errorRequiredField}")
     @Size(min = 3, max = 20, message = "The name of the recipe must be at least 3 characters!")
     private String name;
+
     @NotEmpty(message = "{errorRequiredField}")
     private List<Long> ingredientIds;
 
     @NotBlank(message = "{errorRequiredField}")
     private String type;
+
     @Positive(message = "Preparation time must be a positive number!")
-
     private Float preparationTime;
-    @NotBlank(message = "{errorRequiredField}")
 
+    @NotBlank(message = "{errorRequiredField}")
     private String preparationGuide;
 
     public RecipeAddBindingModel() {

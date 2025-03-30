@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class DeliciousWebApplication {
+public class DeliciousApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(org.example.DeliciousWebApplication.class, args);
+        SpringApplication.run(DeliciousApplication.class, args);
     }
 }
