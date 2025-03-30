@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.roles}"></td>
+            <td>
+                <form th:action="@{/admin/updateRole/{userId}(userId=${user.id})}" method="post">
+                    <label>
+                        <select name="role">
+                            <option value="USER">User</option>
+                            <option value="ADMIN">Admin</option>
+                        </select>
+                    </label>
+                    <button type="submit">Update Role</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>
