@@ -13,11 +13,9 @@ import java.util.List;
 @Service
 public class IngredientServiceImpl implements IngredientService {
  private final IngredientRepository ingredientRepository;
- private final ModelMapper modelMapper;
 
-    public IngredientServiceImpl(IngredientRepository ingredientRepository, ModelMapper modelMapper) {
+    public IngredientServiceImpl(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
-        this.modelMapper = modelMapper;
     }
 
     @Override

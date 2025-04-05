@@ -12,11 +12,9 @@ import java.util.List;
 @Service
 public class MineralServiceImpl implements MineralService {
     private final MineralRepository mineralRepository;
-    private final ModelMapper modelMapper;
 
-    public MineralServiceImpl(MineralRepository mineralRepository, ModelMapper modelMapper) {
+    public MineralServiceImpl(MineralRepository mineralRepository) {
         this.mineralRepository = mineralRepository;
-        this.modelMapper = modelMapper;
     }
     @Override
     public void addMineral(MineralAddBindingModel mineralAddBindingModel) {

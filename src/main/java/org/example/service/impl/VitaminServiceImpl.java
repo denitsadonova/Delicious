@@ -12,11 +12,9 @@ import java.util.List;
 @Service
 public class VitaminServiceImpl implements VitaminService {
     private final VitaminRepository vitaminRepository;
-    private final ModelMapper modelMapper;
 
-    public VitaminServiceImpl(VitaminRepository vitaminRepository, ModelMapper modelMapper) {
+    public VitaminServiceImpl(VitaminRepository vitaminRepository) {
         this.vitaminRepository = vitaminRepository;
-        this.modelMapper = modelMapper;
     }
     @Override
     public void addVitamin(VitaminAddBindingModel vitaminAddBindingModel) {
