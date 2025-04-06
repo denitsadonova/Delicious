@@ -6,10 +6,10 @@ public class UserRegisterBindingModel {
     @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters!")
     @NotBlank(message = "{errorRequiredField}")
     private String username;
-    @Size(min = 6,  message = "Password must be at least 6 characters!")
+    @Size(min = 6, message = "Password must be at least 6 characters!")
     @NotBlank(message = "{errorRequiredField}")
     private String password;
-    @Size(min = 6,  message = "Password must be at least 6 characters!")
+    @Size(min = 6, message = "Password must be at least 6 characters!")
     @NotBlank(message = "{errorRequiredField}")
     private String confirmPassword;
     @Email(message = "Enter valid Email!")

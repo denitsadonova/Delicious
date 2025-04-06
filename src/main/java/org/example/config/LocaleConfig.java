@@ -29,12 +29,13 @@ public class LocaleConfig implements WebMvcConfigurer {
         localeChangeInterceptor.setParamName("lang");
         return localeChangeInterceptor;
     }
+
     @Bean
     public FilterRegistrationBean<CharacterEncodingFilter> charactersEncodingFilter() {
         FilterRegistrationBean<CharacterEncodingFilter> filter = new FilterRegistrationBean<>();
         CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
         encodingFilter.setEncoding("UTF-8");
-        encodingFilter.setForceEncoding(true); // Ensure encoding is applied to all requests and responses
+        encodingFilter.setForceEncoding(true);
         filter.setFilter(encodingFilter);
         return filter;
     }

@@ -39,10 +39,11 @@ public class HealthController {
         model.addAttribute("minerals", mineralService.getAllMinerals());
         return "health";
     }
-@GetMapping("add/vitamin")
-public String showAddVitaminPage() {
+
+    @GetMapping("add/vitamin")
+    public String showAddVitaminPage() {
         return "add-vitamin";
-}
+    }
 
     @PostMapping("/add/vitamin")
     public String addVitaminConfirm(@Valid VitaminAddBindingModel vitaminAddBindingModel, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
@@ -57,10 +58,12 @@ public String showAddVitaminPage() {
 
         return "redirect:/health";
     }
+
     @GetMapping("add/mineral")
     public String showAddMineralPage() {
         return "add-mineral";
     }
+
     @PostMapping("/add/mineral")
     public String addMineralConfirm(@Valid MineralAddBindingModel mineralAddBindingModel, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
@@ -73,13 +76,15 @@ public String showAddVitaminPage() {
         mineralService.addMineral(mineralAddBindingModel);
         return "redirect:/health";
     }
+
     @ModelAttribute
-    public VitaminAddBindingModel vitaminAddBindingModel(){
-        return  new VitaminAddBindingModel();
+    public VitaminAddBindingModel vitaminAddBindingModel() {
+        return new VitaminAddBindingModel();
     }
+
     @ModelAttribute
-    public MineralAddBindingModel mineralAddBindingModel(){
-        return  new MineralAddBindingModel();
+    public MineralAddBindingModel mineralAddBindingModel() {
+        return new MineralAddBindingModel();
     }
 
 

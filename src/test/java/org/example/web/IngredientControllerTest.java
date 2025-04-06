@@ -1,15 +1,11 @@
 package org.example.web;
 
 import org.example.models.binding.IngredientAddBindingModel;
-import org.example.models.entity.IngredientEntity;
-import org.example.models.enums.ClassOfFood;
-import org.example.models.enums.IngredientType;
 import org.example.repository.IngredientRepository;
 import org.example.service.IngredientService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -52,13 +49,12 @@ public class IngredientControllerTest {
     void testAddIngredientConfirmPost_BindingResultError() throws Exception {
         IngredientAddBindingModel ingredientAddBindingModel = new IngredientAddBindingModel();
 
-        // Simulate validation error (empty name)
         mockMvc.perform(MockMvcRequestBuilders.post("/add/ingredient")
                         .with(csrf())  // CSRF protection included
                         .flashAttr("ingredientAddBindingModel", ingredientAddBindingModel)
-                        .param("name", "") // Invalid input
+                        .param("name", "")
                         .param("type", "SPICE"))
-                .andExpect(status().is3xxRedirection())  // Expect redirect
+                .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("add/ingredient"));
     }
 }

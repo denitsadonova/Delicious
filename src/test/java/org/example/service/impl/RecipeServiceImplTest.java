@@ -1,8 +1,5 @@
 package org.example.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.example.models.binding.RecipeAddBindingModel;
 import org.example.models.entity.IngredientEntity;
 import org.example.models.entity.RecipeEntity;
@@ -20,6 +17,9 @@ import org.modelmapper.ModelMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class RecipeServiceImplTest {
@@ -84,7 +84,8 @@ class RecipeServiceImplTest {
     @Test
     void updateFeaturedRecipe_Success() {
         List<Object[]> mockResult = new ArrayList<>();
-        mockResult.add(new Object[]{1L});         when(menuRepository.findMostPopularRecipe()).thenReturn(mockResult);
+        mockResult.add(new Object[]{1L});
+        when(menuRepository.findMostPopularRecipe()).thenReturn(mockResult);
         when(recipeRepository.findById(1L)).thenReturn(Optional.of(testRecipe));
 
         recipeService.updateFeaturedRecipe();

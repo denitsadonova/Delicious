@@ -20,7 +20,7 @@ public class UserEntity {
     private String password;
     @Column(nullable = false, unique = true)
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER,   cascade = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })

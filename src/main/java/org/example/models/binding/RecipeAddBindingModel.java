@@ -22,7 +22,7 @@ public class RecipeAddBindingModel {
     private String preparationGuide;
 
     public RecipeAddBindingModel() {
-            }
+    }
 
     public String getName() {
         return name;

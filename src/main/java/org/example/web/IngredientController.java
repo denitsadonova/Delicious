@@ -29,6 +29,7 @@ public class IngredientController {
     public String addIngredient() {
         return "add-ingredient";
     }
+
     @PostMapping("/add/ingredient")
     public String addIngredientConfirm(@Valid IngredientAddBindingModel ingredientAddBindingModel, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
@@ -45,10 +46,9 @@ public class IngredientController {
     }
 
 
-
     @ModelAttribute
-    public IngredientAddBindingModel ingredientAddBindingModel(){
-        return  new IngredientAddBindingModel();
+    public IngredientAddBindingModel ingredientAddBindingModel() {
+        return new IngredientAddBindingModel();
     }
 
 }

@@ -24,6 +24,6 @@ public class LanguageController {
     public String changeLanguage(@RequestParam("lang") String lang, HttpServletRequest request, HttpServletResponse response) {
         LocaleContextHolder.setLocale(new Locale(lang));
         localeResolver.setLocale(request, response, new Locale(lang));
-        return "redirect:/"; // Or return to a page that will now use the selected language
+        return "redirect:/";
     }
 }

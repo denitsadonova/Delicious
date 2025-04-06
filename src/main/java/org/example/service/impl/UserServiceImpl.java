@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(userEntity);
     }
+
     @Override
     public void assignAdminRole(String username) {
         UserEntity user = userRepository.findByUsername(username)
@@ -64,10 +65,12 @@ public class UserServiceImpl implements UserService {
         user.getRoles().add(adminRole);
         userRepository.save(user);
     }
+
     @Override
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
+
     @Override
     public void updateUserRole(Long userId, String roleName) {
         UserEntity user = userRepository.findById(userId)
@@ -81,6 +84,7 @@ public class UserServiceImpl implements UserService {
         user.setRoles(List.of(role));
         userRepository.save(user);
     }
+
     @Override
     public void updateUserProfile(String username, UserUpdateBindingModel request) {
         UserEntity user = userRepository.findByUsername(username)
@@ -91,11 +95,13 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
     @Override
     public UserEntity findByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
+
     private void refreshUserSession(String username, String newRole) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 

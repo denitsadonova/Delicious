@@ -4,7 +4,6 @@ import org.example.models.binding.VitaminAddBindingModel;
 import org.example.models.entity.VitaminEntity;
 import org.example.repository.VitaminRepository;
 import org.example.service.VitaminService;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +15,7 @@ public class VitaminServiceImpl implements VitaminService {
     public VitaminServiceImpl(VitaminRepository vitaminRepository) {
         this.vitaminRepository = vitaminRepository;
     }
+
     @Override
     public void addVitamin(VitaminAddBindingModel vitaminAddBindingModel) {
         VitaminEntity vitamin = new VitaminEntity();
@@ -25,7 +25,8 @@ public class VitaminServiceImpl implements VitaminService {
         vitaminRepository.save(vitamin);
 
     }
-@Override
+
+    @Override
     public List<VitaminEntity> getAllVitamins() {
         return vitaminRepository.findAll();
     }

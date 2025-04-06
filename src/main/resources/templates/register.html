@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head th:replace="~{fragments/commons::head}"></head>
-    <title>Register</title>
+<head th:replace="~{fragments/commons::head}"></head>
+<title>Register</title>
 <body>
 <header th:replace="~{fragments/commons::nav}"></header>
 
 <div class="registration-container">
-  <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Register</span></h2>
-  <form class="mx-auto w-25 bg-blur"  th:action="@{/users/register}" method="POST" th:object="${userRegisterBindingModel}">
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-      <label for="username">Username</label>
-      <input th:field="*{username}" th:errorclass="bg-blur" type="text" id="username" name="username" required>
-        <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-dark text-capitalize"></small>
-      </div>
-    </div>
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-      <label for="password">Password</label>
-      <input th:field="*{password}" th:errorclass="bg-blur" type="password" id="password" name="password" required>
-        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-dark text-capitalize"></small>
+    <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Register</span></h2>
+    <form class="mx-auto w-25 bg-blur" th:action="@{/users/register}" method="POST"
+          th:object="${userRegisterBindingModel}">
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="username">Username</label>
+                <input th:field="*{username}" th:errorclass="bg-blur" type="text" id="username" name="username"
+                       required>
+                <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                       class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="password">Password</label>
+                <input th:field="*{password}" th:errorclass="bg-blur" type="password" id="password" name="password"
+                       required>
+                <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                       class="text-dark text-capitalize"></small>
 
-      </div>
-    </div>
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-      <label for="confirm_password">Confirm Password</label>
-      <input th:field="*{confirmPassword}" th:errorclass="bg-blur" type="password" id="confirm_password" name="confirm_password" required>
-        <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-dark text-capitalize"></small>
-      </div>
-    </div>
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-      <label for="email">Email</label>
-      <input th:field="*{email}" th:errorclass="bg-blur" type="email" id="email" name="email" required>
-        <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="confirm_password">Confirm Password</label>
+                <input th:field="*{confirmPassword}" th:errorclass="bg-blur" type="password" id="confirm_password"
+                       name="confirm_password" required>
+                <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
+                       class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="email">Email</label>
+                <input th:field="*{email}" th:errorclass="bg-blur" type="email" id="email" name="email" required>
+                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       class="text-dark text-capitalize"></small>
 
-      </div>
-    </div>
-    <div class="col-form-label-sm d-flex justify-content-center">
-      <input type="submit" value="Register">
-    </div>
-  </form>
+            </div>
+        </div>
+        <div class="col-form-label-sm d-flex justify-content-center">
+            <input type="submit" value="Register">
+        </div>
+    </form>
 </div>
-
 
 
 <footer th:replace="~{fragments/commons::footer}"></footer>

@@ -37,11 +37,13 @@ public class MenuServiceImpl implements MenuService {
         menu.setRecipes(existingRecipes);
         menuRepository.save(menu);
     }
+
     public List<MenuEntity> getGroupedMenus() {
         return menuRepository.findAllOrderByDayOfWeekAndRecipeType();
     }
-   @Override
-   public void removeRecipeFromMenu(UserEntity user, DayOfWeek dayOfWeek, Long recipeId) {
+
+    @Override
+    public void removeRecipeFromMenu(UserEntity user, DayOfWeek dayOfWeek, Long recipeId) {
         Optional<MenuEntity> menuOpt = menuRepository.findByUserAndDayOfWeek(user, dayOfWeek);
 
         if (menuOpt.isPresent()) {
@@ -49,9 +51,10 @@ public class MenuServiceImpl implements MenuService {
             menu.getRecipes().removeIf(recipe -> recipe.getId() == (recipeId));
 
             if (menu.getRecipes().isEmpty()) {
-                menuRepository.delete(menu); // Delete the menu if no recipes remain
+                menuRepository.delete(menu);
             } else {
                 menuRepository.save(menu);
             }
-       }
-} }
+        }
+    }
+}

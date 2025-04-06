@@ -8,11 +8,11 @@
         desc.style.display = (desc.style.display === "none") ? "block" : "none";
     }
 
-        document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
         fetchMenus();
     });
 
-        function fetchMenus() {
+    function fetchMenus() {
         fetch('/api/menus') // Calling the REST API
             .then(response => response.json())
             .then(data => {
@@ -54,8 +54,9 @@
                     <ul>
                         <li th:each="recipe : ${menu.recipes}">
                             <span th:text="${recipe.name}"></span>
-                            <form th:action="@{/menus/recipes/{id}/remove(id=${recipe.id})}" method="post" style="display:inline;">
-                                <input type="hidden" name="dayOfWeek" th:value="${menu.dayOfWeek}" />
+                            <form th:action="@{/menus/recipes/{id}/remove(id=${recipe.id})}" method="post"
+                                  style="display:inline;">
+                                <input type="hidden" name="dayOfWeek" th:value="${menu.dayOfWeek}"/>
                                 <button type="submit" class="btn btn-danger">Remove</button>
                             </form>
                         </li>

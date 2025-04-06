@@ -21,12 +21,11 @@ import org.springframework.security.web.context.SecurityContextRepository;
 public class SecurityConfiguration {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http,
-                                           SecurityContextRepository securityContextRepository) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-       return http
-               .csrf(AbstractHttpConfigurer::disable)
-               .authorizeHttpRequests(
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
                                         requestMatchers("/css/**", "/img/**")
@@ -43,22 +42,19 @@ public class SecurityConfiguration {
                                         passwordParameter("password").
                                         defaultSuccessUrl("/").
                                         failureForwardUrl("/users/login-error")
-               )
+                )
                 .logout((logout) ->
                         logout.logoutUrl("/users/logout").
                                 logoutSuccessUrl("/").
                                 invalidateHttpSession(true)
                 ).build();
-//               .securityContext(
-//                        securityContext -> securityContext.
-//                                securityContextRepository(securityContextRepository)
-//                ).build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public SecurityContextRepository securityContextRepository() {
         return new DelegatingSecurityContextRepository(
@@ -66,13 +62,15 @@ public class SecurityConfiguration {
                 new HttpSessionSecurityContextRepository()
         );
     }
+
     @Bean
-    public ApplicationUserDetailsService applicationUserDetailsService (UserRepository userRepository){
+    public ApplicationUserDetailsService applicationUserDetailsService(UserRepository userRepository) {
         return new ApplicationUserDetailsService(userRepository);
     }
+
     @Bean
     public ModelMapper modelMapper() {
-        return  new ModelMapper();
+        return new ModelMapper();
     }
 
 }

@@ -14,7 +14,8 @@ public class RoleEntity {
     @Column(unique = true)
     private UserRoleEnum role;
 
-    public RoleEntity() {}
+    public RoleEntity() {
+    }
 
     public RoleEntity(UserRoleEnum role) {
         this.role = role;

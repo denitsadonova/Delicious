@@ -6,35 +6,37 @@
 <header th:replace="~{fragments/commons::nav}"></header>
 
 <div class="container">
-  <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Add Ingredient</span></h2>
-  <form class="mx-auto w-25 bg-blur"  th:action="@{/add/ingredient}" method="POST" th:object="${ingredientAddBindingModel}">
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-        <label for="name">Name</label>
-        <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>
-        <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>
-      </div>
-    </div>
-    <div class="col-form-label-sm">
-      <div class="label-holder my-text-color d-flex justify-content-center">
-        <label>
-          <select name="Type">
-            <option th:each="type : ${T(org.example.models.enums.IngredientType).values()}"
-                    th:value="${type}" th:text="${type}"></option>
-          </select>
-        </label>
-        <label>
-          <select name="Class">
-            <option th:each="class : ${T(org.example.models.enums.ClassOfFood).values()}"
-                    th:value="${class}" th:text="${class}"></option>
-          </select>
-        </label>
-      </div>
-    </div>
-      <div class="col-form-label-sm d-flex justify-content-center">
-        <input type="submit" value="Add Ingredient">
-      </div>
-  </form>
+    <h2 class="text-center mt-2"><span class="my-text-color align-content-lg-center">Add Ingredient</span></h2>
+    <form class="mx-auto w-25 bg-blur" th:action="@{/add/ingredient}" method="POST"
+          th:object="${ingredientAddBindingModel}">
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label for="name">Name</label>
+                <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                       class="text-dark text-capitalize"></small>
+            </div>
+        </div>
+        <div class="col-form-label-sm">
+            <div class="label-holder my-text-color d-flex justify-content-center">
+                <label>
+                    <select name="Type">
+                        <option th:each="type : ${T(org.example.models.enums.IngredientType).values()}"
+                                th:value="${type}" th:text="${type}"></option>
+                    </select>
+                </label>
+                <label>
+                    <select name="Class">
+                        <option th:each="class : ${T(org.example.models.enums.ClassOfFood).values()}"
+                                th:value="${class}" th:text="${class}"></option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="col-form-label-sm d-flex justify-content-center">
+            <input type="submit" value="Add Ingredient">
+        </div>
+    </form>
 </div>
 
 

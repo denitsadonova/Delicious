@@ -7,6 +7,7 @@ import org.example.models.entity.UserEntity;
 import java.util.List;
 
 public interface UserService {
+
     void registerUser(UserRegisterBindingModel userRegisterBindingModel);
 
     void assignAdminRole(String username);

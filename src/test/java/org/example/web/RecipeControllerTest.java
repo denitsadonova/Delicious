@@ -1,6 +1,5 @@
 package org.example.web;
 
-import org.example.models.binding.RecipeAddBindingModel;
 import org.example.service.IngredientService;
 import org.example.service.RecipeService;
 import org.junit.jupiter.api.Test;
@@ -11,10 +10,11 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(RecipeController.class)
@@ -43,7 +43,7 @@ class RecipeControllerTest {
     void testPostAddRecipe_ValidationError() throws Exception {
         mockMvc.perform(post("/add/recipe")
                         .with(csrf()).with(user("testUser").roles("USER"))
-                        .param("name", "")  // trigger validation error
+                        .param("name", "")
                         .param("ingredients", "Test"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/add/recipe"));

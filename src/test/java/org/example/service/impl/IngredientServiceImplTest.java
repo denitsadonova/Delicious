@@ -1,8 +1,5 @@
 package org.example.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.example.models.binding.IngredientAddBindingModel;
 import org.example.models.entity.IngredientEntity;
 import org.example.models.enums.IngredientType;
@@ -15,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class IngredientServiceImplTest {
@@ -42,26 +42,20 @@ class IngredientServiceImplTest {
 
     @Test
     void addIngredient_Success() {
-        // Arrange
         when(ingredientRepository.save(any(IngredientEntity.class))).thenReturn(ingredientEntity);
 
-        // Act
         ingredientService.addIngredient(ingredientAddBindingModel);
 
-        // Assert
         verify(ingredientRepository).save(any(IngredientEntity.class));
     }
 
     @Test
     void getAllIngredients_Success() {
-        // Arrange
         List<IngredientEntity> ingredients = List.of(ingredientEntity);
         when(ingredientRepository.findAll()).thenReturn(ingredients);
 
-        // Act
         List<IngredientEntity> result = ingredientService.getAllIngredients();
 
-        // Assert
         assertFalse(result.isEmpty());
         assertEquals(1, result.size());
         assertEquals("Sugar", result.get(0).getName());
@@ -69,14 +63,11 @@ class IngredientServiceImplTest {
 
     @Test
     void findAllById_Success() {
-        // Arrange
         List<Long> ids = List.of(1L);
         when(ingredientRepository.findAllById(ids)).thenReturn(List.of(ingredientEntity));
 
-        // Act
         List<IngredientEntity> result = ingredientService.findAllById(ids);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals("Sugar", result.get(0).getName());
@@ -84,14 +75,11 @@ class IngredientServiceImplTest {
 
     @Test
     void findAllById_EmptyIds() {
-        // Arrange
         List<Long> ids = List.of();
         when(ingredientRepository.findAllById(ids)).thenReturn(List.of());
 
-        // Act
         List<IngredientEntity> result = ingredientService.findAllById(ids);
 
-        // Assert
         assertTrue(result.isEmpty());
     }
 }

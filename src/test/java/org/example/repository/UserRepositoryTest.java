@@ -1,6 +1,4 @@
 package org.example.repository;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import org.example.models.entity.UserEntity;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +8,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class UserRepositoryTest {
@@ -28,26 +29,20 @@ class UserRepositoryTest {
 
     @Test
     void findByUsername_Found() {
-        // Arrange
         when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(userEntity));
 
-        // Act
         Optional<UserEntity> result = userRepository.findByUsername("testUser");
 
-        // Assert
         assertTrue(result.isPresent());
         assertEquals("testUser", result.get().getUsername());
     }
 
     @Test
     void findByUsername_NotFound() {
-        // Arrange
         when(userRepository.findByUsername("nonExistent")).thenReturn(Optional.empty());
 
-        // Act
         Optional<UserEntity> result = userRepository.findByUsername("nonExistent");
 
-        // Assert
         assertFalse(result.isPresent());
     }
 }

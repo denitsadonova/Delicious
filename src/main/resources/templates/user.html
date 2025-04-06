@@ -8,12 +8,12 @@
     <form th:action="@{/users/updateProfile}" method="post">
         <label>Full Name:</label>
         <label>
-            <input type="text" name="username" th:value="${user.username}" required />
+            <input type="text" name="username" th:value="${user.username}" required/>
         </label>
 
         <label>Email:</label>
         <label>
-            <input type="email" name="email" th:value="${user.email}" required />
+            <input type="email" name="email" th:value="${user.email}" required/>
         </label>
 
         <button type="submit">Save Changes</button>

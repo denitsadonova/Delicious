@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface MineralService {
 
-     List<MineralEntity> getAllMinerals();
+    List<MineralEntity> getAllMinerals();
+
     void addMineral(MineralAddBindingModel mineralAddBindingModel);
-        List<MineralEntity> findAllById(List<Long> minerals);
+
+    List<MineralEntity> findAllById(List<Long> minerals);
 }

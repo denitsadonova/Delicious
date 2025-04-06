@@ -4,7 +4,6 @@ import org.example.models.binding.MineralAddBindingModel;
 import org.example.models.entity.MineralEntity;
 import org.example.repository.MineralRepository;
 import org.example.service.MineralService;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +15,7 @@ public class MineralServiceImpl implements MineralService {
     public MineralServiceImpl(MineralRepository mineralRepository) {
         this.mineralRepository = mineralRepository;
     }
+
     @Override
     public void addMineral(MineralAddBindingModel mineralAddBindingModel) {
         MineralEntity mineral = new MineralEntity();
@@ -25,7 +25,8 @@ public class MineralServiceImpl implements MineralService {
         mineralRepository.save(mineral);
 
     }
-@Override
+
+    @Override
     public List<MineralEntity> getAllMinerals() {
         return mineralRepository.findAll();
     }

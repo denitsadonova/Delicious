@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 @AutoConfigureMockMvc
@@ -24,8 +24,8 @@ class SecurityConfigurationTest {
     private MockMvc mockMvc;
     @MockBean
     private VitaminRepository vitaminRepository;
-@MockBean
-private MineralRepository mineralRepository;
+    @MockBean
+    private MineralRepository mineralRepository;
     @MockBean
     private UserService userService;
     @MockBean
@@ -48,6 +48,7 @@ private MineralRepository mineralRepository;
     private VitaminService vitaminService;
     @MockBean
     private MineralService mineralService;
+
     @Test
     void testPublicEndpointsAccessible() throws Exception {
         mockMvc.perform(get("/"))

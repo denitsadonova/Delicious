@@ -6,7 +6,7 @@
     background-color: #e9ecef;
 }
 
-.bg-nav{
+.bg-nav {
     background-color: #f8d7da;
 }
 
@@ -18,6 +18,7 @@ body {
     background-size: cover;
     margin-bottom: 5rem;
 }
+
 input {
     background: none;
     color: deeppink;
@@ -27,6 +28,7 @@ input {
     margin: 2px;
     padding: 2px;
 }
+
 select {
     background: none;
     color: deeppink;
@@ -36,9 +38,11 @@ select {
     margin: 3px;
     padding: 3px;
 }
+
 textarea {
     resize: none;
 }
+
 a.nav-link {
     display: flex;
     padding: 3px;
@@ -77,32 +81,77 @@ footer {
     left: 0;
 }
 
-.container{
+.container {
     width: 90%;
 }
 
-.text-stroke{
-    text-shadow:
-            0.07em 0 lightpink,
-            0 0.07em lightpink,
-            -0.07em 0 lightpink,
-            0 -0.07em lightpink;
+.text-stroke {
+    text-shadow: 0.07em 0 lightpink,
+    0 0.07em lightpink,
+    -0.07em 0 lightpink,
+    0 -0.07em lightpink;
 }
 
-.my-text-color{
-    color: #e83e8c!important;
+.my-text-color {
+    color: #e83e8c !important;
 }
 
-.badge-secondary{
+.badge-secondary {
     background-color: #e4606d;
 }
-input.logout-btn {
+
+button.nav-link.logout-btn {
     border: none;
     color: hotpink;
-    margin-left: 0;
-    padding-left: 0;
+    padding-right: 5em !important;
+    cursor: pointer;
+background: none
 }
+
 .health {
     text-decoration: none;
     color: deeppink;
+}
+a.nav-link.dropdown-toggle {
+    color: hotpink;
+    padding-left: 17em;
+    cursor: pointer;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 17em;
+    background-color: white;
+    border: 1px solid #ccc;
+    min-width: 160px;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.nav-link:hover + .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: deeppink;
+}
+
+.dropdown-menu a:hover {
+    background-color: hotpink;
+    color: white;
 }

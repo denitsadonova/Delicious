@@ -1,8 +1,5 @@
 package org.example.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.example.models.binding.VitaminAddBindingModel;
 import org.example.models.entity.VitaminEntity;
 import org.example.repository.VitaminRepository;
@@ -14,6 +11,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class VitaminServiceImplTest {
@@ -41,26 +41,20 @@ class VitaminServiceImplTest {
 
     @Test
     void addVitamin_Success() {
-        // Arrange
         when(vitaminRepository.save(any(VitaminEntity.class))).thenReturn(vitaminEntity);
 
-        // Act
         vitaminService.addVitamin(vitaminAddBindingModel);
 
-        // Assert
         verify(vitaminRepository).save(any(VitaminEntity.class));
     }
 
     @Test
     void getAllVitamins_Success() {
-        // Arrange
         List<VitaminEntity> vitamins = List.of(vitaminEntity);
         when(vitaminRepository.findAll()).thenReturn(vitamins);
 
-        // Act
         List<VitaminEntity> result = vitaminService.getAllVitamins();
 
-        // Assert
         assertFalse(result.isEmpty());
         assertEquals(1, result.size());
         assertEquals("Vitamin C", result.get(0).getName());
@@ -68,14 +62,11 @@ class VitaminServiceImplTest {
 
     @Test
     void findAllById_Success() {
-        // Arrange
         List<Long> ids = List.of(1L);
         when(vitaminRepository.findAllById(ids)).thenReturn(List.of(vitaminEntity));
 
-        // Act
         List<VitaminEntity> result = vitaminService.findAllById(ids);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals("Vitamin C", result.get(0).getName());
@@ -83,14 +74,11 @@ class VitaminServiceImplTest {
 
     @Test
     void findAllById_EmptyIds() {
-        // Arrange
         List<Long> ids = List.of();
         when(vitaminRepository.findAllById(ids)).thenReturn(List.of());
 
-        // Act
         List<VitaminEntity> result = vitaminService.findAllById(ids);
 
-        // Assert
         assertTrue(result.isEmpty());
     }
 }

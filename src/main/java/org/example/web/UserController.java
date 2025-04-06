@@ -32,7 +32,9 @@ public class UserController {
 
     @GetMapping("/register")
     public String register() {
-        return "register";}
+        return "register";
+    }
+
     @GetMapping
     public String user(Model model, Principal principal) {
         UserEntity user = userService.findByUsername(principal.getName());
@@ -54,17 +56,17 @@ public class UserController {
 
     }
 
-        @PostMapping("/updateProfile")
-        @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-        public String updateProfile(UserUpdateBindingModel request, Authentication authentication) {
-            userService.updateUserProfile(authentication.getName(), request);
-            return "redirect:/";
-        }
+    @PostMapping("/updateProfile")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public String updateProfile(UserUpdateBindingModel request, Authentication authentication) {
+        userService.updateUserProfile(authentication.getName(), request);
+        return "redirect:/";
+    }
 
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel() {
-        return  new UserRegisterBindingModel();
+        return new UserRegisterBindingModel();
     }
 
 }

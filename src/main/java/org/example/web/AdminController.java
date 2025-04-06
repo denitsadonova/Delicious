@@ -16,9 +16,9 @@ public class AdminController {
         this.userService = userService;
     }
 
-@GetMapping
-@PreAuthorize("hasRole('ADMIN')")
-public String showUserManagementPage(Model model) {
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public String showUserManagementPage(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
     }

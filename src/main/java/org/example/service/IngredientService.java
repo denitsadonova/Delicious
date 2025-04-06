@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface IngredientService {
     void addIngredient(IngredientAddBindingModel ingredientAddBindingModel);
+
     List<IngredientEntity> getAllIngredients();
+
     List<IngredientEntity> findAllById(List<Long> ingredients);
 }

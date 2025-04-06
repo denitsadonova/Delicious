@@ -12,14 +12,17 @@
             <div class="label-holder my-text-color d-flex justify-content-center">
                 <label for="name">Name</label>
                 <input th:field="*{name}" th:errorclass="bg-blur" type="text" id="name" name="name" required>
-                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-dark text-capitalize"></small>
+                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                       class="text-dark text-capitalize"></small>
             </div>
         </div>
         <div class="col-form-label-sm">
             <div class="label-holder my-text-color d-flex justify-content-center">
                 <label for="description">Description</label>
-                <input th:field="*{description}" th:errorclass="bg-blur" type="text" id="description" name="description" required>
-                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-dark text-capitalize"></small>
+                <input th:field="*{description}" th:errorclass="bg-blur" type="text" id="description" name="description"
+                       required>
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                       class="text-dark text-capitalize"></small>
             </div>
         </div>
         <div class="col-form-label-sm d-flex justify-content-center">

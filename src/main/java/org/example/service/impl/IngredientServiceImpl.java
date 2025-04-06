@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class IngredientServiceImpl implements IngredientService {
- private final IngredientRepository ingredientRepository;
+    private final IngredientRepository ingredientRepository;
 
     public IngredientServiceImpl(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;

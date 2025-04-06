@@ -19,6 +19,8 @@ spring:
   messages:
     basename: messages
     encoding: UTF-8
+  thymeleaf:
+     cache: false
 logging:
   level:
     org:

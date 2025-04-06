@@ -1,8 +1,5 @@
 package org.example.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.example.models.binding.MineralAddBindingModel;
 import org.example.models.entity.MineralEntity;
 import org.example.repository.MineralRepository;
@@ -14,6 +11,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MineralServiceImplTest {
@@ -41,26 +41,20 @@ class MineralServiceImplTest {
 
     @Test
     void addMineral_Success() {
-        // Arrange
         when(mineralRepository.save(any(MineralEntity.class))).thenReturn(mineralEntity);
 
-        // Act
         mineralService.addMineral(mineralAddBindingModel);
 
-        // Assert
         verify(mineralRepository).save(any(MineralEntity.class));
     }
 
     @Test
     void getAllMinerals_Success() {
-        // Arrange
         List<MineralEntity> minerals = List.of(mineralEntity);
         when(mineralRepository.findAll()).thenReturn(minerals);
 
-        // Act
         List<MineralEntity> result = mineralService.getAllMinerals();
 
-        // Assert
         assertFalse(result.isEmpty());
         assertEquals(1, result.size());
         assertEquals("Quartz", result.get(0).getName());
@@ -68,14 +62,11 @@ class MineralServiceImplTest {
 
     @Test
     void findAllById_Success() {
-        // Arrange
         List<Long> ids = List.of(1L);
         when(mineralRepository.findAllById(ids)).thenReturn(List.of(mineralEntity));
 
-        // Act
         List<MineralEntity> result = mineralService.findAllById(ids);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals("Quartz", result.get(0).getName());
@@ -83,14 +74,11 @@ class MineralServiceImplTest {
 
     @Test
     void findAllById_EmptyIds() {
-        // Arrange
         List<Long> ids = List.of();
         when(mineralRepository.findAllById(ids)).thenReturn(List.of());
 
-        // Act
         List<MineralEntity> result = mineralService.findAllById(ids);
 
-        // Assert
         assertTrue(result.isEmpty());
     }
 }

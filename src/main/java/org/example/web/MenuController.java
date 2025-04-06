@@ -53,7 +53,7 @@ public class MenuController {
 
         menuService.removeRecipeFromMenu(user, dayOfWeek, recipeId);
 
-        return "redirect:/menu"; // Redirect to the menu page after removing
+        return "redirect:/menu";
     }
 
 }
