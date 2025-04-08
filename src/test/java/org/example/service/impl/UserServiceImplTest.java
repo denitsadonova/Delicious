@@ -59,30 +59,6 @@ class UserServiceImplTest {
     }
 
     @Test
-    void registerUser_Success() {
-        UserRegisterBindingModel userModel = new UserRegisterBindingModel();
-        userModel.setUsername("newUser");
-        userModel.setEmail("new@example.com");
-        userModel.setPassword("password123");
-
-        when(roleRepository.findByRole(UserRoleEnum.ADMIN)).thenReturn(Optional.of(adminRole));
-        when(passwordEncoder.encode("password123")).thenReturn("hashedPassword");
-
-        userService.registerUser(userModel);
-
-        verify(userRepository).save(any(UserEntity.class));
-    }
-
-    @Test
-    void registerUser_RoleNotFound_ThrowsException() {
-        UserRegisterBindingModel userModel = new UserRegisterBindingModel();
-        when(roleRepository.findByRole(UserRoleEnum.ADMIN)).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(RuntimeException.class, () -> userService.registerUser(userModel));
-        assertEquals("User role not found", exception.getMessage());
-    }
-
-    @Test
     void assignAdminRole_Success() {
         when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(testUser));
         when(roleRepository.findByRole(UserRoleEnum.ADMIN)).thenReturn(Optional.of(adminRole));

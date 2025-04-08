@@ -3,9 +3,7 @@ package org.example.models.entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -21,7 +19,6 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
-            CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinTable(

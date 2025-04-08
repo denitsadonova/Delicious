@@ -105,18 +105,20 @@ button.nav-link.logout-btn {
     color: hotpink;
     padding-right: 5em !important;
     cursor: pointer;
-background: none
+    background: none
 }
 
 .health {
     text-decoration: none;
     color: deeppink;
 }
+
 a.nav-link.dropdown-toggle {
     color: hotpink;
     padding-left: 17em;
     cursor: pointer;
 }
+
 .dropdown-toggle::after {
     display: none;
 }

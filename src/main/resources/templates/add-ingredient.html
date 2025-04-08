@@ -26,9 +26,9 @@
                     </select>
                 </label>
                 <label>
-                    <select name="Class">
-                        <option th:each="class : ${T(org.example.models.enums.ClassOfFood).values()}"
-                                th:value="${class}" th:text="${class}"></option>
+                    <select name="ClassOfFood">
+                        <option th:each="classOfFood : ${T(org.example.models.enums.ClassOfFood).values()}"
+                                th:value="${classOfFood}" th:text="${classOfFood}"></option>
                     </select>
                 </label>
             </div>

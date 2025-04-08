@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import org.example.models.binding.IngredientAddBindingModel;
 import org.example.models.entity.IngredientEntity;
+import org.example.models.enums.ClassOfFood;
 import org.example.models.enums.IngredientType;
 import org.example.repository.IngredientRepository;
 import org.example.service.IngredientService;
@@ -23,6 +24,7 @@ public class IngredientServiceImpl implements IngredientService {
         IngredientEntity ingredient = new IngredientEntity();
         ingredient.setName(ingredientAddBindingModel.getName());
         ingredient.setType(IngredientType.valueOf(ingredientAddBindingModel.getType()));
+        ingredient.setClassOfFood(ClassOfFood.valueOf(ingredientAddBindingModel.getClassOfFood()));
 
         ingredientRepository.save(ingredient);
     }

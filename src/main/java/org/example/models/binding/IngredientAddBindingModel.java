@@ -7,6 +7,8 @@ public class IngredientAddBindingModel {
     private String name;
     @NotBlank(message = "{errorRequiredField}")
     private String type;
+    @NotBlank(message = "{errorRequiredField}")
+    private String classOfFood;
 
     public IngredientAddBindingModel() {
     }
@@ -25,5 +27,13 @@ public class IngredientAddBindingModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getClassOfFood() {
+        return classOfFood;
+    }
+
+    public void setClassOfFood (String classOfFood) {
+        this.classOfFood = classOfFood;
     }
 }

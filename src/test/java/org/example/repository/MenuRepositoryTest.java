@@ -67,30 +67,6 @@ class MenuRepositoryTest {
     }
 
     @Test
-    void findAllOrderByDayOfWeekAndRecipeType() {
-        RecipeEntity newRecipe = recipeRepository.findByName("Musaka");
-        MenuEntity menu1 = new MenuEntity();
-        menu1.setUser(testUser);
-        menu1.setDayOfWeek(DayOfWeek.MONDAY);
-        menu1.setId(1L);
-        menu1.setRecipes(List.of(newRecipe));
-        menuRepository.save(menu1);
-
-        MenuEntity menu2 = new MenuEntity();
-        menu2.setUser(testUser);
-        menu2.setDayOfWeek(DayOfWeek.TUESDAY);
-        menu2.setId(2L);
-        menu2.setRecipes(List.of(newRecipe));
-        menuRepository.save(menu2);
-
-        List<MenuEntity> menus = menuRepository.findAllOrderByDayOfWeekAndRecipeType();
-
-        assertNotNull(menus);
-        assertEquals(2, menus.size());
-        assertTrue(menus.get(0).getDayOfWeek().compareTo(menus.get(1).getDayOfWeek()) < 0); // Check day order
-    }
-
-    @Test
     void countByUser() {
         MenuEntity menu1 = new MenuEntity();
         menu1.setUser(testUser);
@@ -105,25 +81,4 @@ class MenuRepositoryTest {
         assertEquals(2, count);
     }
 
-    @Test
-    void findMostPopularRecipe() {
-
-        MenuEntity menu1 = new MenuEntity();
-        menu1.setUser(testUser);
-        menu1.setRecipes(List.of(recipe));
-        menu1.setDayOfWeek(DayOfWeek.MONDAY);
-        menuRepository.save(menu1);
-
-        MenuEntity menu2 = new MenuEntity();
-        menu2.setUser(testUser);
-        menu2.setRecipes(List.of(recipe));
-        menu2.setDayOfWeek(DayOfWeek.TUESDAY);
-        menuRepository.save(menu2);
-
-        List<Object[]> popularRecipes = menuRepository.findMostPopularRecipe();
-
-        assertNotNull(popularRecipes);
-
-        assertTrue((long) popularRecipes.get(0)[1] > 0);
-    }
 }

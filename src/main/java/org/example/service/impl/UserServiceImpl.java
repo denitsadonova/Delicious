@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(userRegisterBindingModel.getEmail());
         userEntity.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
 
-        RoleEntity userRole = roleRepository.findByRole(UserRoleEnum.ADMIN)
+        RoleEntity userRole = roleRepository.findByRole(UserRoleEnum.USER)
                 .orElseThrow(() -> new RuntimeException("User role not found"));
 
         List<RoleEntity> roles = new ArrayList<>();

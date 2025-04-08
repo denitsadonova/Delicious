@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import org.example.models.binding.IngredientAddBindingModel;
 import org.example.models.entity.IngredientEntity;
+import org.example.models.enums.ClassOfFood;
 import org.example.models.enums.IngredientType;
 import org.example.repository.IngredientRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,11 +34,13 @@ class IngredientServiceImplTest {
         ingredientAddBindingModel = new IngredientAddBindingModel();
         ingredientAddBindingModel.setName("Sugar");
         ingredientAddBindingModel.setType(IngredientType.FRUIT.name());
+        ingredientAddBindingModel.setClassOfFood(ClassOfFood.FAT.name());
 
         ingredientEntity = new IngredientEntity();
         ingredientEntity.setId(1L);
         ingredientEntity.setName("Sugar");
         ingredientEntity.setType(IngredientType.FRUIT);
+        ingredientEntity.setClassOfFood(ClassOfFood.FAT);
     }
 
     @Test
